@@ -2,88 +2,69 @@ package com.anvicode.amazonviewer.model;
 
 import java.util.Date;
 
-public class Book {
+public class Book extends Text implements IVisualizable {
 
-	private int id;
-	private String title;
-	private Date editionDate;
-	private String editorial;
-	private String[] authors;
-	private String isbn;
-	private boolean readed;
-	private int timeReaded;
-	
-	public Book(String title, Date editionDate, String editorial, String isbn) {
-		super();
-		this.title = title;
-		this.editionDate = editionDate;
-		this.editorial = editorial;
-		this.isbn = isbn;
-	}
+    private int id;
+    private String isbn;
+    private boolean readed;
+    private int timeReaded;
 
-	public int getId() {
-		return id;
-	}
+    public Book(String title, Date editionDate, String editorial, String[] authors, String idbn, boolean readed, int timeReaded) {
+        super(title, editionDate, editorial, authors);
+        this.isbn = isbn;
+        this.readed = readed;
+        this.timeReaded = timeReaded;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getIsbn() {
+        return isbn;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
-	public Date getEditionDate() {
-		return editionDate;
-	}
+    public boolean isReaded() {
+        return readed;
+    }
 
-	public void setEditionDate(Date editionDate) {
-		this.editionDate = editionDate;
-	}
+    public void setReaded(boolean readed) {
+        this.readed = readed;
+    }
 
-	public String getEditorial() {
-		return editorial;
-	}
+    public int getTimeReaded() {
+        return timeReaded;
+    }
 
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
-	}
+    public void setTimeReaded(int timeReaded) {
+        this.timeReaded = timeReaded;
+    }
 
-	public String[] getAuthors() {
-		return authors;
-	}
+    @Override
+    public String toString() {
+        return "Book"
+                + "\n Title: " + getTitle()
+                + "\n Editorial: " + getEditorial()
+                + "\n Edition Date: " + getEditionDate()
+                + "\n Authors: " + getAuthors();
+    }
 
-	public void setAuthors(String[] authors) {
-		this.authors = authors;
-	}
+    @Override
+    public Date startTosee(Date dateI) {
+        return dateI;
+    }
 
-	public String getIsbn() {
-		return isbn;
-	}
+    @Override
+    public void stopToSee(Date dateI, Date dateF) {
+        if (dateF.getSeconds() > dateI.getSeconds()) {
+            setTimeReaded(dateF.getSeconds() - dateI.getSeconds());
+        } else {
+            setTimeReaded(0);
+        }
+    }
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public boolean isReaded() {
-		return readed;
-	}
-
-	public void setReaded(boolean readed) {
-		this.readed = readed;
-	}
-
-	public int getTimeReaded() {
-		return timeReaded;
-	}
-
-	public void setTimeReaded(int timeReaded) {
-		this.timeReaded = timeReaded;
-	}
-	
-	
 }

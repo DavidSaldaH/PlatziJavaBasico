@@ -1,96 +1,44 @@
 package com.anvicode.amazonviewer.model;
 
-public class Serie {
+public class Serie extends Film {
 
-	private int id;
-	private String title;
-	private String genre;
-	private String creator;
-	private int duration;
-	private short year;
-	private boolean viewed;
-	private int timeViewed;
-	private int sessuionQuantity;
+    private int id;
+    private int sessionQuantity;
+    private Chapter[] chapter;
 
-	public Serie(String title, String genre, int duration) {
-		super();
-		this.title = title;
-		this.genre = genre;
-		this.duration = duration;
-	}
+    public Serie(String title, String genre, String creator, int duration, int sessionQuantity) {
+        super(title, genre, creator, duration);
+        this.sessionQuantity = sessionQuantity;
+    }
 
-	// Getters and Setters
+    public int getId() {
+        return id;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getSessionQuantity() {
+        return sessionQuantity;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setSessionQuantity(int sessionQuantity) {
+        this.sessionQuantity = sessionQuantity;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public Chapter[] getChapter() {
+        return chapter;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setChapter(Chapter[] chapter) {
+        this.chapter = chapter;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
-	public String getCreator() {
-		return creator;
-	}
-
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
-
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
-
-	public short getYear() {
-		return year;
-	}
-
-	public void setYear(short year) {
-		this.year = year;
-	}
-
-	public boolean isViewed() {
-		return viewed;
-	}
-
-	public void setViewed(boolean viewed) {
-		this.viewed = viewed;
-	}
-
-	public int getTimeViewed() {
-		return timeViewed;
-	}
-
-	public void setTimeViewed(int timeViewed) {
-		this.timeViewed = timeViewed;
-	}
-
-	public int getSessuionQuantity() {
-		return sessuionQuantity;
-	}
-
-	public void setSessuionQuantity(int sessuionQuantity) {
-		this.sessuionQuantity = sessuionQuantity;
-	}
+    @Override
+    public String toString() {
+        return "Serie: "
+                + "\n Title:" + getTitle()
+                + "\n Genre: " + getGenre()
+                + "\n Year: " + getYear()
+                + "\n Creator: " + getCreator()
+                + "\n Duration: " + getDuration();
+    }
 
 }
